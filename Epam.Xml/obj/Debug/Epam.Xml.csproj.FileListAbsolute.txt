@@ -1,0 +1,5 @@
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml\bin\Debug\Epam.Xml.dll
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml\bin\Debug\Epam.Xml.pdb
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml\obj\Debug\Epam.Xml.csprojResolveAssemblyReference.cache
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml\obj\Debug\Epam.Xml.dll
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml\obj\Debug\Epam.Xml.pdb
