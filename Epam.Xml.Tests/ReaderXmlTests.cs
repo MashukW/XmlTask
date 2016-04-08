@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
@@ -12,7 +13,23 @@ namespace Epam.Xml.Tests
         private string _xmlRoute = "TestXML.xml";
         private string _xPath = "//author";
         private Dictionary<string, int> _actualDictionryElement;
-        
+
+        public static IEnumerable TestCaseWithDataIncorrectForCreateObject
+        {
+            get
+            {
+                yield return new TestCaseData("TestXML.xml", "");
+                yield return new TestCaseData("", "//author");
+                yield return new TestCaseData("D:/Install", "//author");
+                yield return new TestCaseData("D:/Install/TestXML.txt", "//author");
+                yield return new TestCaseData(null, null);
+                yield return new TestCaseData(null, "//author");
+                yield return new TestCaseData("D:/Install/TestXML.txt", null);
+                yield return new TestCaseData("     ", "//author");
+                yield return new TestCaseData("      ", "      ");
+            }
+        }
+
         [OneTimeSetUp]
         public void ReaderXmlTestsInit()
         {
@@ -33,9 +50,7 @@ namespace Epam.Xml.Tests
             };
         }
 
-        [TestCase("TestXML.xml", "")]
-        [TestCase("", "//author")]
-        [TestCase("D:/Install", "//author")]
+        [Test, TestCaseSource(nameof(TestCaseWithDataIncorrectForCreateObject))]
         public void CreateObjectTypeOfReaderXml_UsingNullOrEmptyXmlRouteOrReaderXml_ExpectedArgumentNullException(
             string route,
             string xPathExp)
