@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 
 namespace Epam.Xml.Tests
@@ -34,12 +35,13 @@ namespace Epam.Xml.Tests
 
         [TestCase("TestXML.xml", "")]
         [TestCase("", "//author")]
+        [TestCase("D:/Install", "//author")]
         public void CreateObjectTypeOfReaderXml_UsingNullOrEmptyXmlRouteOrReaderXml_ExpectedArgumentNullException(
             string route,
             string xPathExp)
         {
             Assert.That(() => new ReaderXml(route, xPathExp),
-                Throws.InstanceOf(typeof (ArgumentNullException)));
+                Throws.InstanceOf(typeof (ArgumentException)));
         }
 
         [Test]
@@ -53,12 +55,12 @@ namespace Epam.Xml.Tests
         [Test]
         public void GetElementsDictionary_UsingInvalidPathToXml_ExpectedArgumentException()
         {
-            string incorrectPathToXml = "D:/Install";
+            string incorrectPathToXml = "D:/Install/TestXML.xml";
 
-            ReaderXml readerWithInvalidPath = new ReaderXml(incorrectPathToXml, _xPath);
+            ReaderXml readerXmlWithIncorrectPath = new ReaderXml(incorrectPathToXml, "//author");
 
-            Assert.That(()=> readerWithInvalidPath.GetElementsDictionary(),
-                Throws.InstanceOf(typeof(ArgumentException)));
+            Assert.That(()=> readerXmlWithIncorrectPath.GetElementsDictionary(),
+                Throws.InstanceOf(typeof(FileNotFoundException)));
         }
     }
 }
