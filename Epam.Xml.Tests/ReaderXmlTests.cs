@@ -9,10 +9,10 @@ namespace Epam.Xml.Tests
     [TestFixture]
     public class ReaderXmlTests
     {
-        private ReaderXml _readerXml;
-        private string _xmlRoute = "TestXML.xml";
-        private string _xPath = "//author";
-        private Dictionary<string, int> _actualDictionryElement;
+        private string _xmlRoute;
+        private string _xPath;
+        private Dictionary<string, int> _actualDictionryForAuthorElement;
+        private Dictionary<string, int> _actualDictionryForGenreElement;
 
         public static IEnumerable TestCaseWithDataIncorrectForCreateObject
         {
@@ -33,10 +33,10 @@ namespace Epam.Xml.Tests
         [OneTimeSetUp]
         public void ReaderXmlTestsInit()
         {
-            if (_readerXml == null)
-                _readerXml = new ReaderXml(_xmlRoute, _xPath);
+            _xmlRoute = "TestXML.xml";
+            _xPath = "//author";
 
-            _actualDictionryElement = new Dictionary<string, int>
+            _actualDictionryForAuthorElement = new Dictionary<string, int>
             {
                 {"Gambardella, Matthew", 1},
                 {"Ralls, Kim", 1},
@@ -48,33 +48,48 @@ namespace Epam.Xml.Tests
                 {"O'Brien, Tim", 2},
                 {"Galos, Mike", 1}
             };
+
+            _actualDictionryForGenreElement = new Dictionary<string, int>
+            {
+                {"Computer", 4 },
+                {"Fantasy", 4 },
+                {"Romance", 2 },
+                {"Horror", 1 },
+                {"Science Fiction", 1 },
+            };
         }
 
         [Test, TestCaseSource(nameof(TestCaseWithDataIncorrectForCreateObject))]
-        public void CreateObjectTypeOfReaderXml_UsingNullOrEmptyXmlRouteOrReaderXml_ExpectedArgumentNullException(
+        public void GetElementsDictionary_UsingNullOrEmptyXmlRouteOrReaderXml_ExpectedArgumentException(
             string route,
             string xPathExp)
         {
-            Assert.That(() => new ReaderXml(route, xPathExp),
+            Assert.That(() => ReaderXml.GetElementsDictionary(route, xPathExp),
                 Throws.InstanceOf(typeof (ArgumentException)));
         }
 
         [Test]
-        public void GetElementsDictionary_UsingCorrectXmlRouteAndReaderXml_ExpectedValidDictionaryElements()
+        public void GetElementsDictionary_UsingCorrectXmlRouteAndXPath_ExpectedDictionryForAuthorElement()
         {
-            var expectedDictionaryElement = _readerXml.GetElementsDictionary();
+            var expectedDictionaryElement = ReaderXml.GetElementsDictionary(_xmlRoute, _xPath);
 
-            CollectionAssert.AreEquivalent(expectedDictionaryElement, _actualDictionryElement);
+            CollectionAssert.AreEquivalent(expectedDictionaryElement, _actualDictionryForAuthorElement);
         }
 
         [Test]
-        public void GetElementsDictionary_UsingInvalidPathToXml_ExpectedArgumentException()
+        public void GetElementsDictionary_UsingChangeXPathForFindGenreValueInformation_ExpectedDictionryForGenreElement()
+        {
+            var expectedDictionaryElement = ReaderXml.GetElementsDictionary(_xmlRoute, "//genre");
+
+            CollectionAssert.AreEquivalent(expectedDictionaryElement, _actualDictionryForGenreElement);
+        }
+
+        [Test]
+        public void GetElementsDictionary_UsingInvalidPathToXml_ExpectedFileNotFoundException()
         {
             string incorrectPathToXml = "D:/Install/TestXML.xml";
-
-            ReaderXml readerXmlWithIncorrectPath = new ReaderXml(incorrectPathToXml, "//author");
-
-            Assert.That(()=> readerXmlWithIncorrectPath.GetElementsDictionary(),
+            
+            Assert.That(()=> ReaderXml.GetElementsDictionary(incorrectPathToXml, "//author"),
                 Throws.InstanceOf(typeof(FileNotFoundException)));
         }
     }
