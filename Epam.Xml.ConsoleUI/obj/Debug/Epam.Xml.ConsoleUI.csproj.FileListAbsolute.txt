@@ -6,3 +6,4 @@ C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.ConsoleUI
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.ConsoleUI\obj\Debug\Epam.Xml.ConsoleUI.csprojResolveAssemblyReference.cache
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.ConsoleUI\obj\Debug\Epam.Xml.ConsoleUI.exe
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.ConsoleUI\obj\Debug\Epam.Xml.ConsoleUI.pdb
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.ConsoleUI\bin\Debug\Epam.Xml.xml

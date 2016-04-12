@@ -7,3 +7,4 @@ C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.Tests\obj
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.Tests\obj\Debug\Epam.Xml.Tests.pdb
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.Tests\bin\Debug\Epam.Xml.dll
 C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.Tests\bin\Debug\Epam.Xml.pdb
+C:\Users\mashu\Documents\Visual Studio 2015\Projects\Epam.Xml\Epam.Xml.Tests\bin\Debug\Epam.Xml.xml

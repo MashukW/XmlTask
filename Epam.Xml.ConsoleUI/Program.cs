@@ -10,7 +10,7 @@ namespace Epam.Xml.ConsoleUI
         static void Main(string[] args)
         {
             string xmlRoute = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestXML.xml");
-            string xPath = "//author";
+            string xPath = "//genre";
             
             try
             {

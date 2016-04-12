@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Epam.Xml</name>
+    </assembly>
+    <members>
+        <member name="T:Epam.Xml.ReaderXml">
+            <summary>
+            ReaderXml is class which describe work with xml file.
+            </summary>
+        </member>
+        <member name="M:Epam.Xml.ReaderXml.GetElementsDictionary(System.String,System.String)">
+            <summary>
+            Create dictionary which contains elements found by xPath.
+            </summary>
+            <param name="xmlRoute">contains path to xml file.</param>
+            <param name="xPath">contains string with xPath.</param>/// 
+            <returns>dictionary with elements</returns>
+            <remarks>method doesn't work wiht a big size files.</remarks>
+            <exception cref="T:System.ArgumentException">
+            xmlRoute or xpath is null, empty, contains only white space
+            or doesn't have an extension '.xml'
+            </exception>
+            <exception cref="T:System.IO.FileNotFoundException">
+            file not found
+            </exception>
+        </member>
+    </members>
+</doc>
